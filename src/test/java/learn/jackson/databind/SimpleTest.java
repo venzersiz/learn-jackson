@@ -29,7 +29,7 @@ class SimpleTest {
                                        }""");
 
         // JSON 파일로 만들 수도 있다
-        // objectMapper.writeValue(new File("src/test/resources/user.json"), json);
+        // objectMapper.writeValue(new File("src/test/resources/databind/user.json"), json);
         // TODO: 그런데 이스케이프 문자들도 같이 들어가서 역직렬화 시 문제 발생함. 왤까?
         // Expected: {"name" : "John", "age" : 100}
         // Actual: "{\n  \"name\" : \"John\",\n  \"age\" : 100\n}"
@@ -37,12 +37,12 @@ class SimpleTest {
 
     @Test
     void deserialize() throws IOException {
-        // ImmutableUser obj = objectMapper.readValue(getClass().getResource("/user.json"), ImmutableUser.class);
+        // ImmutableUser obj = objectMapper.readValue(getClass().getResource("/databind/user.json"), ImmutableUser.class);
         // 기본 생성자가 없어 역직렬화(인스턴스 생성) 불가하여 아래 예외 발생
         // Cannot construct instance of `learn.jackson.simple.DataBindingTest$ImmutableUser` (although at least one Creator exists): cannot deserialize from Object value (no delegate- or property-based Creator)
 
         // 파일로부터 역직렬화
-        User obj = objectMapper.readValue(getClass().getResource("/user.json"), User.class);
+        User obj = objectMapper.readValue(getClass().getResource("/databind/user.json"), User.class);
         assertThat(obj.getName()).isEqualTo("John");
         assertThat(obj.getAge()).isEqualTo(100);
 
