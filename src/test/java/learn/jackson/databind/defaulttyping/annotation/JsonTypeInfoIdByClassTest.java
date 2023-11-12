@@ -1,4 +1,4 @@
-package learn.jackson.databind.defaulttyping;
+package learn.jackson.databind.defaulttyping.annotation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
