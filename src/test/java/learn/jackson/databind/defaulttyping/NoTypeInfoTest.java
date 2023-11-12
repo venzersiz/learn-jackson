@@ -1,4 +1,4 @@
-package learn.jackson.databind.polymorphism;
+package learn.jackson.databind.defaulttyping;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -50,10 +50,5 @@ class NoTypeInfoTest {
         public Car(String licensePlate) {
             this.licensePlate = licensePlate;
         }
-    }
-
-    static class Aeroplane extends Vehicle {
-
-        private int wingSpan;
     }
 }

@@ -1,4 +1,4 @@
-package learn.jackson.databind.polymorphism;
+package learn.jackson.databind.defaulttyping;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-class JsonTypeInfo_IdByClassTest {
+class JsonTypeInfoIdByClassTest {
 
     ObjectMapper mapper = new ObjectMapper()
         .enable(SerializationFeature.INDENT_OUTPUT);
@@ -26,7 +26,7 @@ class JsonTypeInfo_IdByClassTest {
         String json = mapper.writeValueAsString(vehicle);
         assertThat(json).isEqualTo("""
                                        {
-                                         "@class" : "learn.jackson.databind.polymorphism.JsonTypeInfo_IdByClassTest$Car",
+                                         "@class" : "learn.jackson.databind.defaulttyping.JsonTypeInfoIdByClassTest$Car",
                                          "licensePlate" : "68오 8269"
                                        }""");
         // @JsonTypeInfo의 use 요소의 값으로 타입 식별자를 CLASS로 설정했기 때문에 @class라는 이름의 필드가 자동으로 추가된다. 값은 패키지를 포함한 클래스명이 된다
@@ -60,6 +60,7 @@ class JsonTypeInfo_IdByClassTest {
 
     static class Aeroplane extends Vehicle {
 
+        @SuppressWarnings("UnusedDeclaration")
         private int wingSpan;
     }
 }
